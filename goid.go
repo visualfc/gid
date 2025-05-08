@@ -5,6 +5,6 @@ package gid
 
 import "github.com/timandy/routine"
 
-func Get() int64 {
+func Get() uint64 {
 	return routine.Goid()
 }

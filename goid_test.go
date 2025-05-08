@@ -8,14 +8,14 @@ import (
 	"testing"
 )
 
-func extractGID(s []byte) int64 {
+func extractGID(s []byte) uint64 {
 	s = s[len("goroutine "):]
 	s = s[:bytes.IndexByte(s, ' ')]
-	gid, _ := strconv.ParseInt(string(s), 10, 64)
+	gid, _ := strconv.ParseUint(string(s), 10, 64)
 	return gid
 }
 
-func getGoid() int64 {
+func getGoid() uint64 {
 	if runtime.GOOS == "js" && runtime.GOARCH != "wasm" {
 		return Get()
 	}
