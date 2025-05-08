@@ -10,14 +10,14 @@ import (
 )
 
 var (
-	index int64 = 0
+	index uint64 = 0
 )
 
 const (
 	goid_key = "__goid__"
 )
 
-func Get() int64 {
+func Get() uint64 {
 	obj := js.Global.Get("$curGoroutine")
 	id := obj.Get(goid_key)
 	if id == js.Undefined {
