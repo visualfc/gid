@@ -20,7 +20,11 @@ func getGoid() uint64 {
 		return Get()
 	}
 	var buf [64]byte
-	return extractGID(buf[:runtime.Stack(buf[:], false)])
+	n := runtime.Stack(buf[:], false)
+	if n == 0 {
+		return Get()
+	}
+	return extractGID(buf[:n])
 }
 
 func TestGet(t *testing.T) {
