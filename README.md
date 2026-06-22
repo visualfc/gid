@@ -1,11 +1,11 @@
 # gid
 golang routine id
 
-- GopherJS use `$curGoroutine`
-- Other GOOS/GOARCH use <https://github.com/timandy/routine>
+- Go use <https://github.com/timandy/routine>
+- LLGo use C.pthread_self
 
 ```
 import "github.com/visualfc/gid"
 
-var id int64 = gid.Get()
+var id uint64 = gid.Get()
 ```
