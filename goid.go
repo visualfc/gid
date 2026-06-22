@@ -1,5 +1,6 @@
-//go:build !js || (js && wasm)
+//go:build (!js || (js && wasm)) && !llgo
 // +build !js js,wasm
+// +build !llgo
 
 package gid
 
