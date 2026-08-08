@@ -1,10 +1,6 @@
-//go:build !wasm && !llgo
-// +build !wasm,!llgo
-
+//go:build !llgo && (!go1.23 || !(386 || amd64 || arm || arm64 || loong64 || mips || mipsle || mips64 || mips64le || ppc64 || ppc64le || riscv64 || s390x || wasm))
 package gid
 
-import "github.com/timandy/routine"
-
-func Get() uint64 {
-	return routine.Goid()
-}
+// Get returns the current goroutine ID using the portable fallback on
+// architectures without an assembly fast path.
+func Get() uint64 { return GetSlow() }
