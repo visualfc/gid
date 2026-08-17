@@ -5,7 +5,7 @@ package gid
 
 import _ "unsafe"
 
-//go:linkname goid github.com/goplus/llgo/runtime/internal/runtime.goid
+//go:linkname goid github.com/xgo-dev/llgo/runtime/internal/runtime.goid
 func goid() uint64
 
 func Get() uint64 {
