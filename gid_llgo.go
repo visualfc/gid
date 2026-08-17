@@ -3,35 +3,11 @@
 
 package gid
 
-import (
-	"unsafe"
-)
+import _ "unsafe"
 
-//go:linkname getg github.com/goplus/llgo/runtime/internal/runtime.getg
-func getg() *g
+//go:linkname goid github.com/goplus/llgo/runtime/internal/runtime.goid
+func goid() uint64
 
 func Get() uint64 {
-	return getg().goid
-}
-
-//llgo:type C
-type goroutineFunc func(unsafe.Pointer) unsafe.Pointer
-
-type g struct {
-	defer_ unsafe.Pointer
-	panic_ unsafe.Pointer
-	m      unsafe.Pointer
-
-	atomicstatus uint32
-	goid         uint64
-	parentGoid   uint64
-
-	startfn  goroutineFunc
-	startarg unsafe.Pointer
-
-	context *unsafe.Pointer
-
-	goexit       bool
-	isMain       bool
-	paniconfault bool
+	return goid()
 }
